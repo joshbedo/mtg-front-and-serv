@@ -36,6 +36,8 @@ export function ChatSidebar() {
     }),
   }), [position]);
 
+  console.log("messages", messages);
+
   return (
     <div
       style={{
@@ -47,7 +49,7 @@ export function ChatSidebar() {
       }}
       className="w-80 max-h-[400px] bg-gray-800/95 text-white rounded-lg shadow-lg overflow-hidden flex flex-col"
     >
-      <div 
+      <div
         ref={drag}
         className="p-3 border-b border-gray-700 cursor-move flex items-center gap-2"
       >

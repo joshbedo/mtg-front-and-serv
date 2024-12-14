@@ -3,7 +3,7 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { handleGameActions } from './handlers/gameHandlers.js';
+import { handleGameActions } from './handlers/gameHandlers/index.js';
 import { handleLobbyActions } from './handlers/lobbyHandlers.js';
 import { handleChatActions } from './handlers/chatHandlers.js';
 import { lobbyManager } from './services/lobbyManager.js';
@@ -39,6 +39,11 @@ io.on('connection', (socket) => {
   handleChatActions(io, socket);
 
   socket.on('disconnect', () => {
+    // when a client disconnects, we need to remove them from the lobby
+    // lobbyManager.removePlayerFromLobby(socket.id);
+    // console.log(lobbyManager.lobbies);
+    // TODO: needs fixed
+    // lobbyManager.leaveGameRoom(socket.id);
     console.log('Client disconnected:', socket.id);
   });
 });

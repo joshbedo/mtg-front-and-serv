@@ -17,6 +17,7 @@ export const handleChatActions = (io, socket) => {
   });
 
   socket.on('game:life', ({ roomId, playerId, life, delta, playerName }) => {
+    console.log(delta, 'delta')
     // Only broadcast if there was an actual change in life total
     if (delta !== 0) {
       const prevLife = life - delta;

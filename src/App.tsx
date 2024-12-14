@@ -4,7 +4,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { AppRoutes } from './routes';
 import { UIProvider } from './contexts/UIContext';
-import { initializeGameSync } from './services/gameSync';
+import { initializeGameSync } from './services/gameSync/index';
 
 function App() {
   useEffect(() => {

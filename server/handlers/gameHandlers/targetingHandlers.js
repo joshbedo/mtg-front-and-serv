@@ -1,20 +1,14 @@
-import { Server, Socket } from 'socket.io';
-import { Card } from '../../types/card';
-import { Target } from '../../types/game';
+// import { Server, Socket } from 'socket.io';
+// import { Card } from '../../types/card.js';
+// import { Target } from '../../types/game.js';
 
-export const handleTargetingActions = (io: Server, socket: Socket) => {
+export const handleTargetingActions = (io, socket) => {
   socket.on('game:targeting', ({ 
     roomId, 
     sourceId, 
     sourceName,
     sourceCard,
-    playerName 
-  }: {
-    roomId: string;
-    sourceId: string;
-    sourceName: string;
-    sourceCard: Card;
-    playerName: string;
+    playerName
   }) => {
     socket.to(roomId).emit('game:targetingStarted', {
       sourceId,
@@ -30,13 +24,6 @@ export const handleTargetingActions = (io: Server, socket: Socket) => {
     sourceCard,
     target,
     playerName
-  }: {
-    roomId: string;
-    sourceId: string;
-    sourceName: string;
-    sourceCard: Card;
-    target: Target;
-    playerName: string;
   }) => {
     io.to(roomId).emit('game:action', {
       text: `${playerName} targeted ${target.name} with ${sourceName}`,

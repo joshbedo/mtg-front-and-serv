@@ -3,13 +3,16 @@ import {
   initializeBattlefieldEvents,
   initializeHandEvents,
   initializeLifeEvents,
-  initializePileEvents
-} from './events';
-export { gameEmitters } from './emitters';
+  initializePileEvents,
+  initializeChatEvents,
+} from "./events";
+export { gameEmitters } from "./emitters";
 
 export const initializeGameSync = () => {
+  console.log("initializing game sync");
   // Initialize all event listeners
   initializeGameStateEvents();
+  initializeChatEvents();
   initializeBattlefieldEvents();
   initializeHandEvents();
   initializeLifeEvents();
